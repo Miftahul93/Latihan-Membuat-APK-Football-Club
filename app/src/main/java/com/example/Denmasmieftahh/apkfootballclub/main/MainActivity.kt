@@ -1,22 +1,22 @@
-package com.example.Denmasmieftahh.apkfootballclub
+package com.example.Denmasmieftahh.apkfootballclub.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Spinner
 import com.example.Denmasmieftahh.apkfootballclub.R.color.colorAccent
-import kotlinx.android.synthetic.main.abc_search_dropdown_item_icons_2line.view.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
-
+//MainView belum ditambahkan dibawah ini
 class MainActivity : AppCompatActivity() {
 
+   // private lateinit var presenter: MainPresenter
+    //private lateinit var adapter: MainAdapter
     private lateinit var listTeam: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
@@ -56,5 +56,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        /*
+        val spinnerItems = resources.getStringArray(league)
+        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        spinner.adapter = spinnerAdapter
+        */
+
     }
 }
