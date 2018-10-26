@@ -94,4 +94,11 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun hideLoading() {
         progressBar.invisible()
     }
+
+    override fun showTeamList(data: List<Team>) {
+        swipeRefresh.isRefreshing = false
+        teams.clear()
+        teams.addAll(data)
+        adapter.notifyDataSetChanged()
+    }
 }
