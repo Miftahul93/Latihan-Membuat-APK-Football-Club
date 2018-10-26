@@ -12,6 +12,8 @@ import android.widget.*
 import com.example.Denmasmieftahh.apkfootballclub.R.color.colorAccent
 import com.example.Denmasmieftahh.apkfootballclub.api.ApiRepository
 import com.example.Denmasmieftahh.apkfootballclub.model.Team
+import com.example.Denmasmieftahh.apkfootballclub.util.invisible
+import com.example.Denmasmieftahh.apkfootballclub.util.visible
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -83,5 +85,13 @@ class MainActivity : AppCompatActivity(), MainView {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+    }
+
+    override fun showLoading() {
+        progressBar.visible()
+    }
+
+    override fun hideLoading() {
+        progressBar.invisible()
     }
 }
