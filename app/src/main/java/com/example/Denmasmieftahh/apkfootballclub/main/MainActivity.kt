@@ -4,12 +4,11 @@ import android.R
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.DecorContentParent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.ArrayAdapter
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.Spinner
+import android.view.View
+import android.widget.*
 import com.example.Denmasmieftahh.apkfootballclub.R.color.colorAccent
 import com.example.Denmasmieftahh.apkfootballclub.api.ApiRepository
 import com.example.Denmasmieftahh.apkfootballclub.model.Team
@@ -17,8 +16,8 @@ import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
-//MainView belum ditambahkan dibawah ini
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), MainView {
 
     private var teams: MutableList<Team> = mutableListOf()
     private lateinit var presenter: MainPresenter
@@ -74,5 +73,15 @@ class MainActivity : AppCompatActivity() {
         val request = ApiRepository()
         val gson = Gson()
         presenter = MainPresenter(this, request, gson)
+
+        spinner.onItemSelectedListener = object : AdapterView.onItemSelectedListener,
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                leagueName = spinner.selectedItem.toString()
+                presenter.getTeamList(leagueName)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 }
