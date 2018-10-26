@@ -8,7 +8,9 @@ import android.support.v7.widget.DecorContentParent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.ViewParent
 import android.widget.*
+import com.example.Denmasmieftahh.apkfootballclub.R.array.league
 import com.example.Denmasmieftahh.apkfootballclub.R.color.colorAccent
 import com.example.Denmasmieftahh.apkfootballclub.api.ApiRepository
 import com.example.Denmasmieftahh.apkfootballclub.model.Team
@@ -66,9 +68,8 @@ class MainActivity : AppCompatActivity(), MainView {
         }
 
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
-
 
         adapter = MainAdapter(teams)
         listTeam.adapter = adapter
@@ -77,8 +78,7 @@ class MainActivity : AppCompatActivity(), MainView {
         val gson = Gson()
         presenter = MainPresenter(this, request, gson)
 
-        spinner.onItemSelectedListener = object : AdapterView.onItemSelectedListener,
-            AdapterView.OnItemSelectedListener {
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 leagueName = spinner.selectedItem.toString()
                 presenter.getTeamList(leagueName)
