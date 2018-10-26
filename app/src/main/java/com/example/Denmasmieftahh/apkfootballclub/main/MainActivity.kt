@@ -17,6 +17,7 @@ import com.example.Denmasmieftahh.apkfootballclub.util.visible
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
+import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -84,6 +85,10 @@ class MainActivity : AppCompatActivity(), MainView {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        swipeRefresh.onRefresh {
+            presenter.getTeamList(leagueName)
         }
     }
 
