@@ -9,19 +9,22 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Spinner
 import com.example.Denmasmieftahh.apkfootballclub.R.color.colorAccent
+import com.example.Denmasmieftahh.apkfootballclub.api.ApiRepository
+import com.example.Denmasmieftahh.apkfootballclub.model.Team
+import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 //MainView belum ditambahkan dibawah ini
 class MainActivity : AppCompatActivity() {
 
-   // private lateinit var presenter: MainPresenter
-    //private lateinit var adapter: MainAdapter
+    private var teams: MutableList<Team> = mutableListOf()
+    private lateinit var presenter: MainPresenter
+    private lateinit var adapter: MainAdapter
     private lateinit var listTeam: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var spinner: Spinner
-    private lateinit var language: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,5 +65,11 @@ class MainActivity : AppCompatActivity() {
         spinner.adapter = spinnerAdapter
         */
 
+        adapter = MainAdapter(teams)
+        listTeam.adapter = adapter
+
+        val request = ApiRepository()
+        val gson = Gson()
+        presenter = MainPresenter(this, request, gson)
     }
 }
