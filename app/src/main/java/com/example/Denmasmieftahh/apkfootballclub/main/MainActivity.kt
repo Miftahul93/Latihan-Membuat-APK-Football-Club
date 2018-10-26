@@ -1,10 +1,12 @@
 package com.example.Denmasmieftahh.apkfootballclub.main
 
+import android.R
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Spinner
@@ -60,11 +62,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        /*
+
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(ctx, R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
-        */
+
 
         adapter = MainAdapter(teams)
         listTeam.adapter = adapter
